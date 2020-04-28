@@ -1,2 +1,2 @@
 # rust_project-euler
-Rust code solutions for the Project Euler
+Rust code solutions for [Project Euler](https://projecteuler.net/)
