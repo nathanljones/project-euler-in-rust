@@ -2,7 +2,7 @@
 //What is the largest prime factor of the number 600851475143 ?
 
 fn main() {
-    if is_number_prime(7) == true {
+    if is_number_prime(7) {
         println!("7 is prime",);
     } else {
         println!("7 is NOT prime",);
@@ -17,34 +17,30 @@ fn main() {
     );
 }
 
-fn find_largest_prime_factor(number: i64) -> i64 {
-    let mut largest_factor: i64 = 0;
+fn find_largest_prime_factor(number: u64) -> u64 {
+    let mut largest_factor: u64 = 0;
     let sqrt_of_number = number as f64;
-    let real_sqrt_of_number = sqrt_of_number.sqrt().abs() as i64;
+    let real_sqrt_of_number = sqrt_of_number.sqrt().abs() as u64;
     for counter in 2..real_sqrt_of_number {
-        if is_number_prime(counter) == true {
-            if number % counter == 0 {
-                largest_factor = counter;
-            }
+        if is_number_prime(counter) && number % counter == 0 {
+            largest_factor = counter;
         }
     }
     largest_factor
 }
-fn find_lowest_prime_factor(number: i64) -> i64 {
+fn find_lowest_prime_factor(number: u64) -> u64 {
     let sqrt_of_number = number as f64;
-    let real_sqrt_of_number = sqrt_of_number.sqrt().abs() as i64;
+    let real_sqrt_of_number = sqrt_of_number.sqrt().abs() as u64;
     for divisor in 2..real_sqrt_of_number {
-        if is_number_prime(divisor) == true {
-            if number % divisor == 0 {
-                return divisor;
-            }
+        if is_number_prime(divisor) && number % divisor == 0 {
+            return divisor;
         }
     }
-    return number;
+    number
 }
-fn is_number_prime(number_to_check: i64) -> bool {
+fn is_number_prime(number_to_check: u64) -> bool {
     let sqrt_of_number = number_to_check as f64;
-    let real_sqrt_of_number = sqrt_of_number.sqrt().abs() as i64;
+    let real_sqrt_of_number = sqrt_of_number.sqrt().abs() as u64;
     for counter in 2..real_sqrt_of_number {
         if number_to_check % counter == 0 {
             return false;
